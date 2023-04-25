@@ -9,7 +9,11 @@ from lib.image import open_image
 
 class IndexView(View):
     async def get(self) -> Response:
-        return render_template("index.html", self.request, {})
+        # return render_template("index.html", self.request, {})
+        return Response(
+            text='<h1>Hello</h1>',
+            # headers={'content-type': 'text/html'},
+        )
 
     async def post(self) -> Response:
         try:
@@ -38,3 +42,4 @@ class IndexView(View):
         except Exception as err:
             ctx = {"error": str(err)}
             return render_template("index.html", self.request, ctx)
+            

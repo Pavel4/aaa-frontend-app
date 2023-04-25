@@ -8,29 +8,22 @@
   </head>
   <body>
 
-    {% if not error and not image_b64 and not words %}
     <div class="container text-center col-8">
       <h1 class="display-3">
         Распрознавание текста
       </h1>
     </div>
-    {% endif %}
 
-    {% if error %}
     <div class="container col-6 mt-4 alert alert-danger">
-      {{ error }}
+      Some Nasty Error :(
     </div>
-    {% endif %}
 
-    {% if image %}
     <div class="container text-center col-8 mt-4">
       <figure class="figure">
         <img class="img-fluid rounded mx-auto" src="{{ image }}">
       </figure>
     </div>
-    {% endif %}
 
-    {% if words %}
     <div class="container col-6">
       <table class="table mx-auto">
         <thead>
@@ -41,10 +34,9 @@
           </tr>
         </thead>
         <tbody>
-          {% for word in words %}
           <tr>
             <td>
-              <img src="{{ word.image }}">
+              <img src="" alt="IMG">
             </td>
             <td>{{ word.word }}</td>
             <td class="
@@ -61,11 +53,9 @@
               {{ "%.2f"|format(word.accuracy * 100) }}%
             </td>
           </tr>
-          {% endfor %}
         </tbody>
       </table>
     </div>
-    {% endif %}
 
     <form class="container col-6 p-4 mt-4 border rounded" method="POST" enctype="multipart/form-data">
       <div class="mb-3">
