@@ -29,6 +29,9 @@ class IndexView(View):
                         "accuracy": accuracy,
                     }
                 )
+
+            words = sorted(words, lambda x: x["accuracy"], reverse=True)
+
             image_b64 = image_to_img_src(draw.get_highlighted_image())
             ctx = {"image": image_b64, "words": words}
             return render_template("index.html", self.request, ctx)
